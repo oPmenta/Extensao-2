@@ -63,7 +63,7 @@ int main()
             }
             if (tema == 1)
             {
-                printf("TEMA: Time paulista de futebol\n\n");
+                printf("TEMA: Time Paulista de futebol\n\n");
             }
             if (tema == 2)
             {
@@ -551,7 +551,7 @@ int main()
                 getch();
                 system("cls");
             }
-            
+
             // Reinicializa as variáveis para serem usadas novamente
             strcpy(palavra, "");
             acertouPalavra = errado = totalLetrasDigitadas = tema = 0;
