@@ -9,6 +9,70 @@
 
 #define tam 300
 
+void temas(int tema);
+void letras(int totalLetrasDigitadas, char letrasDigitadas[]);
+
+void temas(int tema)
+{
+    if (tema == 0)
+    {
+        printf("TEMA: Personagem da Nintendo\n\n");
+    }
+    if (tema == 1)
+    {
+        printf("TEMA: Time Paulista de futebol\n\n");
+    }
+    if (tema == 2)
+    {
+        printf("TEMA: Cidade de Minas Gerais\n\n");
+    }
+    if (tema == 3)
+    {
+        printf("TEMA: Ave\n\n");
+    }
+    if (tema == 4)
+    {
+        printf("TEMA: Instrumento musical\n\n");
+    }
+    if (tema == 5)
+    {
+        printf("TEMA: Mamifero\n\n");
+    }
+    if (tema == 6)
+    {
+        printf("TEMA: Fruta vermelha\n\n");
+    }
+    if (tema == 7)
+    {
+        printf("TEMA: Idioma\n\n");
+    }
+    if (tema == 8)
+    {
+        printf("TEMA: Veiculo\n\n");
+    }
+}
+
+void letras(int totalLetrasDigitadas, char letrasDigitadas[])
+{
+    // Exibe as letras digitadas até o momento
+    printf("\nLetras digitadas: ");
+    for (int j = 0; j < totalLetrasDigitadas; j++)
+    {
+        int repetido = 0;
+        for (int k = 0; k < j; k++)
+        {
+            if (letrasDigitadas[j] == letrasDigitadas[k])
+            {
+                repetido = 1;
+            }
+        }
+        if (repetido == 0 && letrasDigitadas[j] != '\0')
+        {
+            printf("%c ", letrasDigitadas[j]);
+        }
+    }
+}
+
 int main()
 {
     char palavraCerta[9][20] = {"mario", "corinthians", "uberaba", "ganso", "guitarra", "baleia", "framboesa", "mandarim", "submarino"};
@@ -25,6 +89,7 @@ int main()
     int errado;
     int totalLetrasDigitadas;
     int tema;
+    int cont;
 
     strcpy(palavra, "");
     pergunta = 's';
@@ -48,51 +113,31 @@ int main()
 
     while (pergunta == 's')
     {
+        // Verifica se todas as letras foram preenchidas formando a palavra completa
+        cont = 0;
+        for (k = 0; k < tamanhoPalavra; k++)
+        {
+            if (palavraPreenchendo[k] != '_')
+            {
+                cont++;
+            }
+            if (cont == tamanhoPalavra)
+            {
+                acertouPalavra = 1;
+            }
+        }
+
+        // Preenche toda a palavra
         if (strcmp(palavra, palavraCerta[i]) == 0)
         {
             system("cls");
             acertouPalavra = 1;
-            strcpy(palavraPreenchendo, palavraCerta[i]); // Preenche toda a palavra
+            strcpy(palavraPreenchendo, palavraCerta[i]);
         }
 
         if (errado == 0)
         {
-            if (tema == 0)
-            {
-                printf("TEMA: Personagem da Nintendo\n\n");
-            }
-            if (tema == 1)
-            {
-                printf("TEMA: Time Paulista de futebol\n\n");
-            }
-            if (tema == 2)
-            {
-                printf("TEMA: Cidade de Minas Gerais\n\n");
-            }
-            if (tema == 3)
-            {
-                printf("TEMA: Ave\n\n");
-            }
-            if (tema == 4)
-            {
-                printf("TEMA: Instrumento musical\n\n");
-            }
-            if (tema == 5)
-            {
-                printf("TEMA: Mamifero\n\n");
-            }
-            if (tema == 6)
-            {
-                printf("TEMA: Fruta vermelha\n\n");
-            }
-            if (tema == 7)
-            {
-                printf("TEMA: Idioma\n\n");
-            }
-            if (tema == 8)
-            {
-                printf("TEMA: Veiculo\n\n");
-            }
+            temas(tema);
 
             printf(" ____\n");
             printf("|    |\n");
@@ -104,62 +149,11 @@ int main()
             // Exibe a palavra preenchendo as letras corretas
             printf("   %s\n", palavraPreenchendo);
 
-            // Exibe as letras digitadas até o momento
-            printf("\nLetras digitadas: ");
-            for (int j = 0; j < totalLetrasDigitadas; j++)
-            {
-                int repetido = 0;
-                for (k = 0; k < j; k++)
-                {
-                    if (letrasDigitadas[j] == letrasDigitadas[k])
-                    {
-                        repetido = 1;
-                    }
-                }
-                if (repetido == 0 && letrasDigitadas[j] != '\0')
-                {
-                    printf("%c ", letrasDigitadas[j]);
-                }
-            }
+            letras(totalLetrasDigitadas, letrasDigitadas);
         }
         else if (errado == 1)
         {
-            if (tema == 0)
-            {
-                printf("TEMA: Personagem da Nintendo\n\n");
-            }
-            if (tema == 1)
-            {
-                printf("TEMA: Time paulista de futebol\n\n");
-            }
-            if (tema == 2)
-            {
-                printf("TEMA: Cidade de Minas Gerais\n\n");
-            }
-            if (tema == 3)
-            {
-                printf("TEMA: Ave\n\n");
-            }
-            if (tema == 4)
-            {
-                printf("TEMA: Instrumento musical\n\n");
-            }
-            if (tema == 5)
-            {
-                printf("TEMA: Mamifero\n\n");
-            }
-            if (tema == 6)
-            {
-                printf("TEMA: Fruta vermelha\n\n");
-            }
-            if (tema == 7)
-            {
-                printf("TEMA: Idioma\n\n");
-            }
-            if (tema == 8)
-            {
-                printf("TEMA: Veiculo\n\n");
-            }
+            temas(tema);
 
             printf(" ____\n");
             printf("|    |\n");
@@ -172,61 +166,11 @@ int main()
             printf("   %s\n", palavraPreenchendo);
 
             // Exibe as letras digitadas até o momento
-            printf("\nLetras digitadas: ");
-            for (int j = 0; j < totalLetrasDigitadas; j++)
-            {
-                int repetido = 0;
-                for (k = 0; k < j; k++)
-                {
-                    if (letrasDigitadas[j] == letrasDigitadas[k])
-                    {
-                        repetido = 1;
-                    }
-                }
-                if (repetido == 0 && letrasDigitadas[j] != '\0')
-                {
-                    printf("%c ", letrasDigitadas[j]);
-                }
-            }
+            letras(totalLetrasDigitadas, letrasDigitadas);
         }
         else if (errado == 2)
         {
-            if (tema == 0)
-            {
-                printf("TEMA: Personagem da Nintendo\n\n");
-            }
-            if (tema == 1)
-            {
-                printf("TEMA: Time paulista de futebol\n\n");
-            }
-            if (tema == 2)
-            {
-                printf("TEMA: Cidade de Minas Gerais\n\n");
-            }
-            if (tema == 3)
-            {
-                printf("TEMA: Ave\n\n");
-            }
-            if (tema == 4)
-            {
-                printf("TEMA: Instrumento musical\n\n");
-            }
-            if (tema == 5)
-            {
-                printf("TEMA: Mamifero\n\n");
-            }
-            if (tema == 6)
-            {
-                printf("TEMA: Fruta vermelha\n\n");
-            }
-            if (tema == 7)
-            {
-                printf("TEMA: Idioma\n\n");
-            }
-            if (tema == 8)
-            {
-                printf("TEMA: Veiculo\n\n");
-            }
+            temas(tema);
 
             printf(" ____\n");
             printf("|    |\n");
@@ -239,61 +183,11 @@ int main()
             printf("   %s\n", palavraPreenchendo);
 
             // Exibe as letras digitadas até o momento
-            printf("\nLetras digitadas: ");
-            for (int j = 0; j < totalLetrasDigitadas; j++)
-            {
-                int repetido = 0;
-                for (k = 0; k < j; k++)
-                {
-                    if (letrasDigitadas[j] == letrasDigitadas[k])
-                    {
-                        repetido = 1;
-                    }
-                }
-                if (repetido == 0 && letrasDigitadas[j] != '\0')
-                {
-                    printf("%c ", letrasDigitadas[j]);
-                }
-            }
+            letras(totalLetrasDigitadas, letrasDigitadas);
         }
         else if (errado == 3)
         {
-            if (tema == 0)
-            {
-                printf("TEMA: Personagem da Nintendo\n\n");
-            }
-            if (tema == 1)
-            {
-                printf("TEMA: Time paulista de futebol\n\n");
-            }
-            if (tema == 2)
-            {
-                printf("TEMA: Cidade de Minas Gerais\n\n");
-            }
-            if (tema == 3)
-            {
-                printf("TEMA: Ave\n\n");
-            }
-            if (tema == 4)
-            {
-                printf("TEMA: Instrumento musical\n\n");
-            }
-            if (tema == 5)
-            {
-                printf("TEMA: Mamifero\n\n");
-            }
-            if (tema == 6)
-            {
-                printf("TEMA: Fruta vermelha\n\n");
-            }
-            if (tema == 7)
-            {
-                printf("TEMA: Idioma\n\n");
-            }
-            if (tema == 8)
-            {
-                printf("TEMA: Veiculo\n\n");
-            }
+            temas(tema);
 
             printf(" ____\n");
             printf("|    |\n");
@@ -306,61 +200,11 @@ int main()
             printf("   %s\n", palavraPreenchendo);
 
             // Exibe as letras digitadas até o momento
-            printf("\nLetras digitadas: ");
-            for (int j = 0; j < totalLetrasDigitadas; j++)
-            {
-                int repetido = 0;
-                for (k = 0; k < j; k++)
-                {
-                    if (letrasDigitadas[j] == letrasDigitadas[k])
-                    {
-                        repetido = 1;
-                    }
-                }
-                if (repetido == 0 && letrasDigitadas[j] != '\0')
-                {
-                    printf("%c ", letrasDigitadas[j]);
-                }
-            }
+            letras(totalLetrasDigitadas, letrasDigitadas);
         }
         else if (errado == 4)
         {
-            if (tema == 0)
-            {
-                printf("TEMA: Personagem da Nintendo\n\n");
-            }
-            if (tema == 1)
-            {
-                printf("TEMA: Time paulista de futebol\n\n");
-            }
-            if (tema == 2)
-            {
-                printf("TEMA: Cidade do estado de Minas Gerais\n\n");
-            }
-            if (tema == 3)
-            {
-                printf("TEMA: Ave\n\n");
-            }
-            if (tema == 4)
-            {
-                printf("TEMA: Instrumento musical\n\n");
-            }
-            if (tema == 5)
-            {
-                printf("TEMA: Mamifero\n\n");
-            }
-            if (tema == 6)
-            {
-                printf("TEMA: Fruta vermelha\n\n");
-            }
-            if (tema == 7)
-            {
-                printf("TEMA: Idioma\n\n");
-            }
-            if (tema == 8)
-            {
-                printf("TEMA: Veiculo\n\n");
-            }
+            temas(tema);
 
             printf(" ____\n");
             printf("|    |\n");
@@ -373,61 +217,11 @@ int main()
             printf("   %s\n", palavraPreenchendo);
 
             // Exibe as letras digitadas até o momento
-            printf("\nLetras digitadas: ");
-            for (int j = 0; j < totalLetrasDigitadas; j++)
-            {
-                int repetido = 0;
-                for (k = 0; k < j; k++)
-                {
-                    if (letrasDigitadas[j] == letrasDigitadas[k])
-                    {
-                        repetido = 1;
-                    }
-                }
-                if (repetido == 0 && letrasDigitadas[j] != '\0')
-                {
-                    printf("%c ", letrasDigitadas[j]);
-                }
-            }
+            letras(totalLetrasDigitadas, letrasDigitadas);
         }
         else if (errado == 5)
         {
-            if (tema == 0)
-            {
-                printf("TEMA: Personagem da Nintendo\n\n");
-            }
-            if (tema == 1)
-            {
-                printf("TEMA: Time paulista de futebol\n\n");
-            }
-            if (tema == 2)
-            {
-                printf("TEMA: Cidade de Minas Gerais\n\n");
-            }
-            if (tema == 3)
-            {
-                printf("TEMA: Ave\n\n");
-            }
-            if (tema == 4)
-            {
-                printf("TEMA: Instrumento musical\n\n");
-            }
-            if (tema == 5)
-            {
-                printf("TEMA: Mamifero\n\n");
-            }
-            if (tema == 6)
-            {
-                printf("TEMA: Fruta vermelha\n\n");
-            }
-            if (tema == 7)
-            {
-                printf("TEMA: Idioma\n\n");
-            }
-            if (tema == 8)
-            {
-                printf("TEMA: Veiculo\n\n");
-            }
+            temas(tema);
 
             printf(" ____\n");
             printf("|    |\n");
@@ -440,22 +234,7 @@ int main()
             printf("   %s\n", palavraPreenchendo);
 
             // Exibe as letras digitadas até o momento
-            printf("\nLetras digitadas: ");
-            for (int j = 0; j < totalLetrasDigitadas; j++)
-            {
-                int repetido = 0;
-                for (k = 0; k < j; k++)
-                {
-                    if (letrasDigitadas[j] == letrasDigitadas[k])
-                    {
-                        repetido = 1;
-                    }
-                }
-                if (repetido == 0 && letrasDigitadas[j] != '\0')
-                {
-                    printf("%c ", letrasDigitadas[j]);
-                }
-            }
+            letras(totalLetrasDigitadas, letrasDigitadas);
         }
 
         if (errado < 6 && acertouPalavra == 0)
@@ -489,7 +268,7 @@ int main()
             }
         }
 
-        // Se o jogador digitar a palavra completa
+        // Se o jogador digitar uma palavra errada
         if (tamanhoDigitado > 1 && strcmp(palavra, palavraCerta[i]) != 0)
         {
             errado++;
@@ -509,22 +288,8 @@ int main()
             printf("   %s\n", palavraPreenchendo);
 
             // Exibe as letras digitadas até o momento
-            printf("\nLetras digitadas: ");
-            for (int j = 0; j < totalLetrasDigitadas; j++)
-            {
-                int repetido = 0;
-                for (k = 0; k < j; k++)
-                {
-                    if (letrasDigitadas[j] == letrasDigitadas[k])
-                    {
-                        repetido = 1;
-                    }
-                }
-                if (repetido == 0 && letrasDigitadas[j] != '\0')
-                {
-                    printf("%c ", letrasDigitadas[j]);
-                }
-            }
+            letras(totalLetrasDigitadas, letrasDigitadas);
+            
             printf("\n\nVoce perdeu!\n");
             printf("A palavra era: %s\n\n", palavraCerta[i]);
             acertouPalavra = 1;
