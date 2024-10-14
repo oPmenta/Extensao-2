@@ -48,6 +48,70 @@ int main()
 
     while (pergunta == 's')
     {
+
+        if (errado == 0)
+        {
+            printf(" ____\n");
+            printf("|    |\n");
+            printf("|\n");
+            printf("|\n");
+            printf("|\n");
+            printf("|\n\n");
+        }
+        else if (errado == 1)
+        {
+            printf(" ____\n");
+            printf("|    |\n");
+            printf("|    O\n");
+            printf("|\n");
+            printf("|\n");
+            printf("|\n\n");
+        }
+        else if (errado == 2)
+        {
+            printf(" ____\n");
+            printf("|    |\n");
+            printf("|    O\n");
+            printf("|    |\n");
+            printf("|\n");
+            printf("|\n\n");
+        }
+        else if (errado == 3)
+        {
+            printf(" ____\n");
+            printf("|    |\n");
+            printf("|    O\n");
+            printf("|   /|\n");
+            printf("|\n");
+            printf("|\n\n");
+        }
+        else if (errado == 4)
+        {
+            printf(" ____\n");
+            printf("|    |\n");
+            printf("|    O\n");
+            printf("|   /|\\ \n");
+            printf("|\n");
+            printf("|\n\n");
+        }
+        else if (errado == 5)
+        {
+            printf(" ____\n");
+            printf("|    |\n");
+            printf("|    O\n");
+            printf("|   /|\\ \n");
+            printf("|   /\n");
+            printf("|\n\n");
+        }
+        if (errado == 6)
+        {
+            printf(" ____\n");
+            printf("|    |\n");
+            printf("|    O\n");
+            printf("|   /|\\ \n");
+            printf("|   / \\\n");
+            printf("|\n\n");
+        }
         if (errado < 6)
         {
             printf("Digite uma letra ou a palavra correta: ");
@@ -105,7 +169,7 @@ int main()
         }
 
         // Exibe a palavra preenchendo as letras corretas
-        printf("\nPalavra: %s\n\n", palavraPreenchendo);
+        printf("\nPalavra: %s\n", palavraPreenchendo);
 
         // Exibe as letras digitadas até o momento
         printf("\n\nLetras digitadas: ");
@@ -129,6 +193,13 @@ int main()
         // Verifica se o jogador errou a letra/palavra 6 vezes
         if (errado == 6)
         {
+            printf(" ____\n");
+            printf("|    |\n");
+            printf("|    O\n");
+            printf("|   /|\\ \n");
+            printf("|   / \\\n");
+            printf("|\n\n");
+
             printf("\n\nVoce perdeu!\n\n");
             acertouPalavra = 1;
         }
@@ -136,9 +207,9 @@ int main()
         // Verifica se o jogador acertou a palavra e quer continuar
         if (acertouPalavra == 1)
         {
-            printf("<< sim (s) >>\n");
-            printf("<< nao (n) >>\n");
-            printf("Deseja jogar novamente ?: ");
+            printf("Deseja jogar novamente ?");
+            printf("\n<< sim (s) >>\n");
+            printf("<< nao (n) >>\n\n");
             fflush(stdin);
             scanf("%c", &pergunta);
             while (pergunta != 's' && pergunta != 'n')
