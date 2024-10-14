@@ -90,10 +90,11 @@ int main()
     int totalLetrasDigitadas;
     int tema;
     int cont;
+    int completouPalavra;
 
     strcpy(palavra, "");
     pergunta = 's';
-    acertouPalavra = errado = totalLetrasDigitadas = tema = 0;
+    acertouPalavra = errado = totalLetrasDigitadas = tema = completouPalavra = 0;
 
     srand(time(NULL));
     i = rand() % 9; // Escolhe uma palavra eleatória que está no vetor
@@ -124,6 +125,7 @@ int main()
             if (cont == tamanhoPalavra)
             {
                 acertouPalavra = 1;
+                completouPalavra = 1;
             }
         }
 
@@ -240,7 +242,7 @@ int main()
 
         if (errado < 6 && acertouPalavra == 0)
         {
-            printf("\n\nDigite uma letra ou a palavra correta: ");
+            printf("\n\nDigite uma letra ou uma palavra: ");
             fflush(stdin);
             scanf("%s", palavra);
             system("cls");
@@ -278,6 +280,8 @@ int main()
         // Verifica se o jogador errou a letra/palavra 6 vezes
         if (errado == 6)
         {
+            temas(tema);
+
             printf(" ____\n");
             printf("|    |\n");
             printf("|    O\n");
@@ -290,8 +294,8 @@ int main()
 
             // Exibe as letras digitadas até o momento
             letras(totalLetrasDigitadas, letrasDigitadas);
-            
-            printf("\n\nVoce perdeu!\n");
+
+            printf("\n\nVoce perdeu!\n\n");
             printf("A palavra era: %s\n\n", palavraCerta[i]);
             acertouPalavra = 1;
         }
@@ -299,7 +303,11 @@ int main()
         // Verifica se o jogador acertou a palavra e quer continuar
         if (acertouPalavra == 1)
         {
-            printf("\n\nVoce acertou a palavra!\n\n");
+            if (strcmp(palavra, palavraCerta[i]) == 0 || completouPalavra == 1)
+            {
+                printf("\n\nVoce acertou a palavra!\n\n");
+            }
+
             printf("Deseja jogar novamente ?");
             printf("\n<< sim (s) >>\n");
             printf("<< nao (n) >>\n\n");
@@ -320,7 +328,7 @@ int main()
 
             // Reinicializa as variáveis para serem usadas novamente
             strcpy(palavra, "");
-            acertouPalavra = errado = totalLetrasDigitadas = tema = 0;
+            acertouPalavra = errado = totalLetrasDigitadas = tema = completouPalavra = 0;
 
             srand(time(NULL));
             i = rand() % 9;
