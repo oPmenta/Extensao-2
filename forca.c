@@ -149,6 +149,7 @@ int main()
             // Exibe a palavra preenchendo as letras corretas
             printf("   %s\n", palavraPreenchendo);
 
+            // Exibe as letras digitadas até o momento
             letras(totalLetrasDigitadas, letrasDigitadas);
         }
         else if (errado == 1)
