@@ -146,7 +146,6 @@ int main()
             {
                 printf("Voce errou a Letra!\n");
                 errado++;
-                printf("%d/6 ERROS\n", errado);
             }
         }
 
