@@ -142,7 +142,6 @@ int main()
         // Reinicializa o vetor de palavras usadas se todas já tiverem sido usadas
         if (totalUsadas == totalPalavras)
         {
-            printf("\nTodas as palavras foram usadas, reiniciando...\n");
             totalUsadas = 0;
         }
 
