@@ -94,14 +94,12 @@ int main()
     int cont;
     int completouPalavra;
     int totalPalavras;
-    int alerta;
-    int alerta2;
     int jaUsada;
     int totalUsadas;
 
     strcpy(palavra, "");
     pergunta = 's';
-    acertouPalavra = errado = totalLetrasDigitadas = tema = completouPalavra = l = alerta = alerta2 = totalUsadas = 0;
+    acertouPalavra = errado = totalLetrasDigitadas = tema = completouPalavra = l = totalUsadas = 0;
     totalPalavras = 9;
 
     srand(time(NULL));
@@ -115,7 +113,7 @@ int main()
         printf("|   /|\\ \n");
         printf("|   / \\\n");
         printf("|\n");
-        printf("\n\nPressione qualquer tecla para jogar. . .");
+        printf("\n\nPressione qualquer tecla para iniciar o jogo. . .");
         getch();
         system("cls");
 
