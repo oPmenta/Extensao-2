@@ -108,6 +108,16 @@ int main()
 
     while (pergunta == 's')
     {
+        printf("\t JOGO DA FORCA\n\n");
+        printf(" ____\n");
+        printf("|    |\n");
+        printf("|    O\n");
+        printf("|   /|\\ \n");
+        printf("|   / \\\n");
+        printf("|\n");
+        printf("\n\nPressione qualquer tecla para jogar. . .");
+        getch();
+        system("cls");
 
         // Seleciona uma palavra aleatória que ainda não foi usada
         do
@@ -337,7 +347,7 @@ int main()
                 letras(totalLetrasDigitadas, letrasDigitadas);
 
                 printf("\n\nVoce perdeu!\n\n");
-                printf("A palavra era: %s\n\n", palavraCerta[i]);
+                printf("A palavra era: %s\n", palavraCerta[i]);
                 acertouPalavra = 1;
             }
         }
@@ -345,26 +355,12 @@ int main()
         // Verifica se o jogador acertou a palavra e quer continuar
         if (completouPalavra == 1)
         {
-            printf("\n\nVoce acertou a palavra!\n\n");
+            printf("\n\nVoce acertou a palavra!\n");
         }
 
-        printf("Deseja jogar novamente ?");
-        printf("\n<< sim (s) >>\n");
-        printf("<< nao (n) >>\n\n");
-        fflush(stdin);
-        scanf("%c", &pergunta);
-        while (pergunta != 's' && pergunta != 'n')
-        {
-            printf("Digite uma resposta valida: ");
-            fflush(stdin);
-            scanf("%c", &pergunta);
-        }
-        if (pergunta == 's')
-        {
-            printf("\nPressione qualquer tecla para continuar. . .");
-            getch();
-            system("cls");
-        }
+        printf("\nPressione qualquer tecla para voltar ao MENU. . .");
+        getch();
+        system("cls");
 
         // Reinicializa as variáveis para serem usadas novamente
         acertouPalavra = errado = totalLetrasDigitadas = completouPalavra = 0;
