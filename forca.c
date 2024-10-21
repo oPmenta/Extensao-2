@@ -76,11 +76,13 @@ void letras(int totalLetrasDigitadas, char letrasDigitadas[])
 int main()
 {
     char palavraCerta[9][20] = {"mario", "corinthians", "uberaba", "ganso", "guitarra", "baleia", "framboesa", "mandarim", "submarino"};
+    char palavrasUsadas[9][20];
     char letrasDigitadas[tam];
     char palavraPreenchendo[20];
     char pergunta;
     int i;
     int k;
+    int l;
     int tamanhoPalavra;
     int tamanhoDigitado;
     char palavra[20];
@@ -91,261 +93,281 @@ int main()
     int tema;
     int cont;
     int completouPalavra;
+    int totalPalavras;
+    int alerta;
+    int alerta2;
+    int jaUsada;
+    int totalUsadas;
 
     strcpy(palavra, "");
     pergunta = 's';
-    acertouPalavra = errado = totalLetrasDigitadas = tema = completouPalavra = 0;
+    acertouPalavra = errado = totalLetrasDigitadas = tema = completouPalavra = l = alerta = alerta2 = totalUsadas = 0;
+    totalPalavras = 9;
 
     srand(time(NULL));
-    i = rand() % 9; // Escolhe uma palavra eleatória que está no vetor
-    tema = i;
-    tamanhoPalavra = strlen(palavraCerta[i]);
-
-    for (k = 0; k < tamanhoPalavra; k++)
-    {
-        palavraPreenchendo[k] = '_';
-    }
-    palavraPreenchendo[tamanhoPalavra] = '\0'; // Adiciona o terminador de string
-
-    for (k = 0; k < tam; k++)
-    {
-        letrasDigitadas[k] = '\0';
-    }
 
     while (pergunta == 's')
     {
-        // Verifica se todas as letras foram preenchidas formando a palavra completa
-        cont = 0;
-        for (k = 0; k < tamanhoPalavra; k++)
+
+        // Seleciona uma palavra aleatória que ainda não foi usada
+        do
         {
-            if (palavraPreenchendo[k] != '_')
+            i = rand() % 9;
+            // Verifica se a palavra já foi usada
+            jaUsada = 0;
+            for (int j = 0; j < totalUsadas; j++)
             {
-                cont++;
-            }
-            if (cont == tamanhoPalavra)
-            {
-                acertouPalavra = 1;
-                completouPalavra = 1;
-            }
-        }
-
-        // Preenche toda a palavra
-        if (strcmp(palavra, palavraCerta[i]) == 0)
-        {
-            system("cls");
-            acertouPalavra = 1;
-            strcpy(palavraPreenchendo, palavraCerta[i]);
-        }
-
-        if (errado == 0)
-        {
-            temas(tema);
-
-            printf(" ____\n");
-            printf("|    |\n");
-            printf("|\n");
-            printf("|\n");
-            printf("|\n");
-            printf("|\n");
-
-            // Exibe a palavra preenchendo as letras corretas
-            printf("   %s\n", palavraPreenchendo);
-
-            // Exibe as letras digitadas até o momento
-            letras(totalLetrasDigitadas, letrasDigitadas);
-        }
-        else if (errado == 1)
-        {
-            temas(tema);
-
-            printf(" ____\n");
-            printf("|    |\n");
-            printf("|    O\n");
-            printf("|\n");
-            printf("|\n");
-            printf("|\n");
-
-            // Exibe a palavra preenchendo as letras corretas
-            printf("   %s\n", palavraPreenchendo);
-
-            // Exibe as letras digitadas até o momento
-            letras(totalLetrasDigitadas, letrasDigitadas);
-        }
-        else if (errado == 2)
-        {
-            temas(tema);
-
-            printf(" ____\n");
-            printf("|    |\n");
-            printf("|    O\n");
-            printf("|    |\n");
-            printf("|\n");
-            printf("|\n");
-
-            // Exibe a palavra preenchendo as letras corretas
-            printf("   %s\n", palavraPreenchendo);
-
-            // Exibe as letras digitadas até o momento
-            letras(totalLetrasDigitadas, letrasDigitadas);
-        }
-        else if (errado == 3)
-        {
-            temas(tema);
-
-            printf(" ____\n");
-            printf("|    |\n");
-            printf("|    O\n");
-            printf("|   /|\n");
-            printf("|\n");
-            printf("|\n");
-
-            // Exibe a palavra preenchendo as letras corretas
-            printf("   %s\n", palavraPreenchendo);
-
-            // Exibe as letras digitadas até o momento
-            letras(totalLetrasDigitadas, letrasDigitadas);
-        }
-        else if (errado == 4)
-        {
-            temas(tema);
-
-            printf(" ____\n");
-            printf("|    |\n");
-            printf("|    O\n");
-            printf("|   /|\\ \n");
-            printf("|\n");
-            printf("|\n");
-
-            // Exibe a palavra preenchendo as letras corretas
-            printf("   %s\n", palavraPreenchendo);
-
-            // Exibe as letras digitadas até o momento
-            letras(totalLetrasDigitadas, letrasDigitadas);
-        }
-        else if (errado == 5)
-        {
-            temas(tema);
-
-            printf(" ____\n");
-            printf("|    |\n");
-            printf("|    O\n");
-            printf("|   /|\\ \n");
-            printf("|   /\n");
-            printf("|\n");
-
-            // Exibe a palavra preenchendo as letras corretas
-            printf("   %s\n", palavraPreenchendo);
-
-            // Exibe as letras digitadas até o momento
-            letras(totalLetrasDigitadas, letrasDigitadas);
-        }
-
-        if (errado < 6 && acertouPalavra == 0)
-        {
-            printf("\n\nDigite uma letra ou uma palavra: ");
-            fflush(stdin);
-            scanf("%s", palavra);
-            system("cls");
-        }
-        acertouLetra = 0;
-        tamanhoDigitado = strlen(palavra);
-
-        // Se o jogador digitar uma única letra
-        if (tamanhoDigitado == 1)
-        {
-            letrasDigitadas[totalLetrasDigitadas] = palavra[0];
-            totalLetrasDigitadas++;
-
-            // Verifica se a letra está correta
-            for (int j = 0; j < tamanhoPalavra; j++)
-            {
-                if (palavra[0] == palavraCerta[i][j])
+                if (strcmp(palavraCerta[i], palavrasUsadas[j]) == 0)
                 {
-                    palavraPreenchendo[j] = palavra[0]; // Substitui o _ pela letra correta
-                    acertouLetra = 1;
+                    jaUsada = 1;
+                    j = totalUsadas;
                 }
             }
-            if (acertouLetra == 0)
+        } while (jaUsada == 1);
+
+        // Adiciona a palavra selecionada ao vetor de palavras usadas
+        strcpy(palavrasUsadas[totalUsadas], palavraCerta[i]);
+        totalUsadas++;
+
+        // Reinicializa o vetor de palavras usadas se todas já tiverem sido usadas
+        if (totalUsadas == totalPalavras)
+        {
+            printf("\nTodas as palavras foram usadas, reiniciando...\n");
+            totalUsadas = 0;
+        }
+
+        tema = i;
+        tamanhoPalavra = strlen(palavraCerta[i]);
+
+        for (k = 0; k < tamanhoPalavra; k++)
+        {
+            palavraPreenchendo[k] = '_';
+        }
+        palavraPreenchendo[tamanhoPalavra] = '\0';
+
+        for (k = 0; k < tam; k++)
+        {
+            letrasDigitadas[k] = '\0';
+        }
+        while (acertouPalavra == 0 && errado < 6)
+        {
+            cont = 0;
+            for (k = 0; k < tamanhoPalavra; k++)
+            {
+                if (palavraPreenchendo[k] != '_')
+                {
+                    cont++;
+                }
+                if (cont == tamanhoPalavra)
+                {
+                    acertouPalavra = 1;
+                    completouPalavra = 1;
+                }
+            }
+
+            // Preenche toda a palavra
+            if (strcmp(palavra, palavraCerta[i]) == 0)
+            {
+                system("cls");
+                acertouPalavra = 1;
+                completouPalavra = 1;
+                strcpy(palavraPreenchendo, palavraCerta[i]);
+            }
+
+            if (errado == 0)
+            {
+                temas(tema);
+
+                printf(" ____\n");
+                printf("|    |\n");
+                printf("|\n");
+                printf("|\n");
+                printf("|\n");
+                printf("|\n");
+
+                // Exibe a palavra preenchendo as letras corretas
+                printf("   %s\n", palavraPreenchendo);
+
+                // Exibe as letras digitadas até o momento
+                letras(totalLetrasDigitadas, letrasDigitadas);
+            }
+            else if (errado == 1)
+            {
+                temas(tema);
+
+                printf(" ____\n");
+                printf("|    |\n");
+                printf("|    O\n");
+                printf("|\n");
+                printf("|\n");
+                printf("|\n");
+
+                // Exibe a palavra preenchendo as letras corretas
+                printf("   %s\n", palavraPreenchendo);
+
+                // Exibe as letras digitadas até o momento
+                letras(totalLetrasDigitadas, letrasDigitadas);
+            }
+            else if (errado == 2)
+            {
+                temas(tema);
+
+                printf(" ____\n");
+                printf("|    |\n");
+                printf("|    O\n");
+                printf("|    |\n");
+                printf("|\n");
+                printf("|\n");
+
+                // Exibe a palavra preenchendo as letras corretas
+                printf("   %s\n", palavraPreenchendo);
+
+                // Exibe as letras digitadas até o momento
+                letras(totalLetrasDigitadas, letrasDigitadas);
+            }
+            else if (errado == 3)
+            {
+                temas(tema);
+
+                printf(" ____\n");
+                printf("|    |\n");
+                printf("|    O\n");
+                printf("|   /|\n");
+                printf("|\n");
+                printf("|\n");
+
+                // Exibe a palavra preenchendo as letras corretas
+                printf("   %s\n", palavraPreenchendo);
+
+                // Exibe as letras digitadas até o momento
+                letras(totalLetrasDigitadas, letrasDigitadas);
+            }
+            else if (errado == 4)
+            {
+                temas(tema);
+
+                printf(" ____\n");
+                printf("|    |\n");
+                printf("|    O\n");
+                printf("|   /|\\ \n");
+                printf("|\n");
+                printf("|\n");
+
+                // Exibe a palavra preenchendo as letras corretas
+                printf("   %s\n", palavraPreenchendo);
+
+                // Exibe as letras digitadas até o momento
+                letras(totalLetrasDigitadas, letrasDigitadas);
+            }
+            else if (errado == 5)
+            {
+                temas(tema);
+
+                printf(" ____\n");
+                printf("|    |\n");
+                printf("|    O\n");
+                printf("|   /|\\ \n");
+                printf("|   /\n");
+                printf("|\n");
+
+                // Exibe a palavra preenchendo as letras corretas
+                printf("   %s\n", palavraPreenchendo);
+
+                // Exibe as letras digitadas até o momento
+                letras(totalLetrasDigitadas, letrasDigitadas);
+            }
+
+            if (errado < 6 && acertouPalavra == 0)
+            {
+                printf("\n\nDigite uma letra ou uma palavra: ");
+                fflush(stdin);
+                scanf("%s", palavra);
+                system("cls");
+                for (int j = 0; palavra[j] != '\0'; j++)
+                {
+                    palavra[j] = tolower(palavra[j]);
+                }
+            }
+            acertouLetra = 0;
+            tamanhoDigitado = strlen(palavra);
+
+            // Se o jogador digitar uma única letra
+            if (tamanhoDigitado == 1)
+            {
+                letrasDigitadas[totalLetrasDigitadas] = palavra[0];
+                totalLetrasDigitadas++;
+
+                // Verifica se a letra está correta
+                for (int j = 0; j < tamanhoPalavra; j++)
+                {
+                    if (palavra[0] == palavraCerta[i][j])
+                    {
+                        palavraPreenchendo[j] = palavra[0]; // Substitui o _ pela letra correta
+                        acertouLetra = 1;
+                    }
+                }
+                if (acertouLetra == 0)
+                {
+                    errado++;
+                }
+            }
+
+            // Se o jogador digitar uma palavra errada
+            if (tamanhoDigitado > 1 && strcmp(palavra, palavraCerta[i]) != 0)
             {
                 errado++;
             }
-        }
 
-        // Se o jogador digitar uma palavra errada
-        if (tamanhoDigitado > 1 && strcmp(palavra, palavraCerta[i]) != 0)
-        {
-            errado++;
-        }
+            // Verifica se o jogador errou a letra/palavra 6 vezes
+            if (errado == 6)
+            {
+                temas(tema);
 
-        // Verifica se o jogador errou a letra/palavra 6 vezes
-        if (errado == 6)
-        {
-            temas(tema);
+                printf(" ____\n");
+                printf("|    |\n");
+                printf("|    O\n");
+                printf("|   /|\\ \n");
+                printf("|   / \\\n");
+                printf("|\n");
 
-            printf(" ____\n");
-            printf("|    |\n");
-            printf("|    O\n");
-            printf("|   /|\\ \n");
-            printf("|   / \\\n");
-            printf("|\n");
+                // Exibe a palavra preenchendo as letras corretas
+                printf("   %s\n", palavraPreenchendo);
 
-            // Exibe a palavra preenchendo as letras corretas
-            printf("   %s\n", palavraPreenchendo);
+                // Exibe as letras digitadas até o momento
+                letras(totalLetrasDigitadas, letrasDigitadas);
 
-            // Exibe as letras digitadas até o momento
-            letras(totalLetrasDigitadas, letrasDigitadas);
-
-            printf("\n\nVoce perdeu!\n\n");
-            printf("A palavra era: %s\n\n", palavraCerta[i]);
-            acertouPalavra = 1;
+                printf("\n\nVoce perdeu!\n\n");
+                printf("A palavra era: %s\n\n", palavraCerta[i]);
+                acertouPalavra = 1;
+            }
         }
 
         // Verifica se o jogador acertou a palavra e quer continuar
-        if (acertouPalavra == 1)
+        if (completouPalavra == 1)
         {
-            if (strcmp(palavra, palavraCerta[i]) == 0 || completouPalavra == 1)
-            {
-                printf("\n\nVoce acertou a palavra!\n\n");
-            }
+            printf("\n\nVoce acertou a palavra!\n\n");
+        }
 
-            printf("Deseja jogar novamente ?");
-            printf("\n<< sim (s) >>\n");
-            printf("<< nao (n) >>\n\n");
+        printf("Deseja jogar novamente ?");
+        printf("\n<< sim (s) >>\n");
+        printf("<< nao (n) >>\n\n");
+        fflush(stdin);
+        scanf("%c", &pergunta);
+        while (pergunta != 's' && pergunta != 'n')
+        {
+            printf("Digite uma resposta valida: ");
             fflush(stdin);
             scanf("%c", &pergunta);
-            while (pergunta != 's' && pergunta != 'n')
-            {
-                printf("Digite uma resposta valida: ");
-                fflush(stdin);
-                scanf("%c", &pergunta);
-            }
-            if (pergunta == 's')
-            {
-                printf("\nPressione qualquer tecla para continuar. . .");
-                getch();
-                system("cls");
-            }
-
-            // Reinicializa as variáveis para serem usadas novamente
-            strcpy(palavra, "");
-            acertouPalavra = errado = totalLetrasDigitadas = tema = completouPalavra = 0;
-
-            srand(time(NULL));
-            i = rand() % 9;
-            tema = i;
-            tamanhoPalavra = strlen(palavraCerta[i]);
-
-            for (k = 0; k < tamanhoPalavra; k++)
-            {
-                palavraPreenchendo[k] = '_';
-            }
-            palavraPreenchendo[tamanhoPalavra] = '\0';
-
-            for (k = 0; k < tam; k++)
-            {
-                letrasDigitadas[k] = '\0';
-            }
         }
+        if (pergunta == 's')
+        {
+            printf("\nPressione qualquer tecla para continuar. . .");
+            getch();
+            system("cls");
+        }
+
+        // Reinicializa as variáveis para serem usadas novamente
+        acertouPalavra = errado = totalLetrasDigitadas = completouPalavra = 0;
     }
 
     return 0;
