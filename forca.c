@@ -82,7 +82,6 @@ int main()
     char pergunta;
     int i;
     int k;
-    int l;
     int tamanhoPalavra;
     int tamanhoDigitado;
     char palavra[20];
@@ -99,7 +98,7 @@ int main()
 
     strcpy(palavra, "");
     pergunta = 's';
-    acertouPalavra = errado = totalLetrasDigitadas = tema = completouPalavra = l = totalUsadas = 0;
+    acertouPalavra = errado = totalLetrasDigitadas = tema = completouPalavra = totalUsadas = 0;
     totalPalavras = 9;
 
     srand(time(NULL));
