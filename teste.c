@@ -20,7 +20,7 @@ void temas(int tema)
     }
     if (tema == 1 || tema == 10)
     {
-        printf("TEMA: Time brasileiro de futebol\n\n");
+        printf("TEMA: Time de futebol\n\n");
     }
     if (tema == 2 || tema == 11)
     {
@@ -75,7 +75,7 @@ void letras(int totalLetrasDigitadas, char letrasDigitadas[])
 
 int main()
 {
-    char palavraCerta[18][20] = {"mario", "corinthians", "uberaba", "coruja", "guitarra", "baleia", "framboesa", "russo", "submarino", "link", "botafogo", "betim", "pinguim", "flauta", "morcego", "groselha", "hindi", "trem"};
+    char palavraCerta[18][20] = {"mario", "corinthians", "uberaba", "ganso", "guitarra", "baleia", "framboesa", "russo", "submarino", "bowser", "botafogo", "betim", "pinguim", "flauta", "morcego", "groselha", "hindi", "trem"};
     char palavrasUsadas[18][20];
     char letrasDigitadas[tam];
     char palavraPreenchendo[20];
@@ -119,7 +119,7 @@ int main()
         // seleciona uma palavra aleatória que ainda não foi usada
         do
         {
-            i = 10;
+            i = 1;
             // verifica se a palavra já foi usada
             jaUsada = 0;
             for (int j = 0; j < totalUsadas; j++)
@@ -354,30 +354,30 @@ int main()
             printf("\n\nVoce acertou a palavra!\n");
         }
 
-        // {"mario", "corinthians", "uberaba", "coruja", "guitarra", "baleia", "framboesa", "russo", "submarino", "link", "botafogo", "betim", "pinguim", "flauta", "morcego", "groselha", "hindi", "trem"};
-        printf("\n\n\n- Curiosidade\n");
+        // {"mario", "corinthians", "uberaba", "ganso", "guitarra", "baleia", "framboesa", "russo", "submarino", "bowser", "botafogo", "betim", "pinguim", "flauta", "morcego", "groselha", "hindi", "trem"};
+        printf("\n\n\n- Curiosidade: \n");
         if (tema == 0)
             printf("\nMario eh um personagem ficticio da franquia e serie de jogos eletronicos Mario da Nintendo, criado pelo desenvolvedor e designer de jogos eletronicos japones Shigeru Miyamoto. \n");
         if (tema == 1)
-            printf("\nAlem de ser o melhor time do mundo, o mascote do clube, o Mosqueteiro, surgiu de uma cronica do jornal A Gazeta Esportiva apos um amistoso contra o Barracas da Argentina. O texto comparava a garra dos jogadores corintianos com Os Tres Mosqueteiros de Alexandre Dumas. \n");
+            printf("\n*Simplesmente o melhor time do mundo!*\n\nO mascote do clube, o Mosqueteiro, surgiu de uma cronica do jornal A Gazeta Esportiva apos um amistoso contra o Barracas da Argentina. O texto comparava a garra dos jogadores corintianos com Os Tres Mosqueteiros de Alexandre Dumas. \n");
         if (tema == 2)
-            printf("\nO nome Uberaba vem do termo tupi Y-beraba, que significa agua clara. \n");
+            printf("\n \n");
         if (tema == 3)
-            printf("\nA ave tem a capacidade de rodar cabeca em ateh 135 graus para cada lado, mas nao eh verdade que elas conseguem dar uma volta completa com a cabeca, o que muitas pessoas acreditam.  \n");
+            printf("\n \n");
         if (tema == 4)
-            printf("\nA guitarra eh um instrumento extremamente versatil, capaz de se adaptar a diversos generos musicas, como rock, pop, jazz e musica classica. Essa capacidade de se inserir em tantos estilos musicas ajudou a populariza-la globalmente. \n");
+            printf("\n \n");
         if (tema == 5)
-            printf("\nAlgumas especies de baleias, como as baleias-jubarte, tem a capacidade de mudar de cor para se camuflar. \n");
+            printf("\n \n");
         if (tema == 6)
-            printf("\nO consumo de framboesa reduz a inflamacao no corpo e ajuda a prevenir o surgimento de alguns tipos de cancer, como colon, prostata, mama e endometrio. \n");
+            printf("\n \n");
         if (tema == 7)
-            printf("\nO russo eh uma das 4 linguas mais traduzidas do mundo. \n");
+            printf("\n \n");
         if (tema == 8)
-            printf("\nNos submarinos existem camaras especiais que atraves do ar comprimido faz com que a quantidade de agua dentro delas possa ser aumentada ou diminuida. Assim sendo, o submarino afunda ou flutua. \n");
+            printf("\n \n");
         if (tema == 9)
-            printf("\nLink apareceu em mais de 20 jogos desde sua criação e ja fez Crossovers em alguns jogos como Super Smash Bros, Tetris, Mario Kart 8 entre outros. \n");
+            printf("\n \n");
         if (tema == 10)
-            printf("\nO Botafogo detem o recorde de titulos consecutivos do Campeonato Carioca, tendo vencido o torneio por sete anos seguidos, de 1968 a 1974. \n");
+            printf("\n \n");
         if (tema == 11)
             printf("\n \n");
         if (tema == 12)
