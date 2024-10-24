@@ -354,7 +354,6 @@ int main()
             printf("\n\nVoce acertou a palavra!\n");
         }
 
-        // {"mario", "corinthians", "uberaba", "coruja", "guitarra", "baleia", "framboesa", "russo", "submarino", "link", "botafogo", "betim", "pinguim", "flauta", "morcego", "groselha", "hindi", "trem"};
         printf("\n\n\n- Curiosidade\n");
         if (tema == 0)
             printf("\nMario originalmente se chamava Jumpman em seu primeiro jogo, Donkey Kong (1981). Seu nome foi mudado para Mario em homenagem a Mario Segale, o proprietario do armazem que a Nintendo alugava nos EUA. \n");
